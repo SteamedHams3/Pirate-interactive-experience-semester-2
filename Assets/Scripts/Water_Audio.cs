@@ -27,4 +27,14 @@ public class Water_Audio : MonoBehaviour
         }
     }
 
+     private void OnTriggerExit(Collider other)
+    {
+        if(other.tag == "Player")
+        {
+            gameObject.GetComponent<AudioSource>().Stop();
+            Debug.Log("player out of water");
+        }
+    }
+
+  
 }
