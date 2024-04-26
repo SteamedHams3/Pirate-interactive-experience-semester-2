@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class chest_behaviour : MonoBehaviour
 {
+    public GameObject chest_opening_lid;
+    bool will_open = false;
+    bool closed;
+
 
     public Animator animator;
     // Start is called before the first frame update
@@ -15,14 +19,21 @@ public class chest_behaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-    }
-
-    private void OnTriggerStay (Collider other)
-    {
-        if(other.tag == "Player" && Input.GetKeyDown("e"))
+        if(Input.GetKeyDown("e") && will_open )
         {
-            animator.SetTrigger("Open");
+             animator.SetTrigger("Open");
         }
     }
+
+
+
+    private void OnTriggerExit (Collider other)
+       {
+        will_open = false;
+       }
+
+       private void OnTriggerEnter (Collider other)
+       {
+        will_open = true;
+       }
 }
