@@ -21,12 +21,19 @@ public class cannon_behaviour : MonoBehaviour
     {
        if(Input.GetKeyDown("e") && will_fire )
         {
-             gameObject.GetComponent<AudioSource>().PlayOneShot(cannonShot);
+           StartCoroutine(CannonFire());
+             
+        } 
+    }
+
+    IEnumerator CannonFire()
+    {
+            gameObject.GetComponent<AudioSource>().PlayOneShot(cannonShot);
              smoke.Play();
+             HideUI();
+             yield return new WaitForSeconds(2);
              AudioClip randomClip = myAudioClips[Random.Range(0, myAudioClips.Length)];
              myAudioSource.PlayOneShot(randomClip);
-             HideUI();
-        } 
     }
 
 private void OnTriggerExit (Collider other)
