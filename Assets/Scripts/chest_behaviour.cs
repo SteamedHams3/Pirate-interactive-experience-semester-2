@@ -35,6 +35,7 @@ public class chest_behaviour : MonoBehaviour
              HideUI();
              yield return new WaitForSeconds(1);
               gameObject.GetComponent<AudioSource>().PlayOneShot(pirateChest);
+              will_open = false;
     }
 
 
