@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class chest_behaviour : MonoBehaviour
 {
-    public GameObject chest_opening_lid;
+    public AudioClip chestSound;
+    public AudioClip pirateChest;
     public GameObject ui;
+
     bool will_open = false;
-    bool closed;
+    
 
 
     public Animator animator;
@@ -22,9 +24,17 @@ public class chest_behaviour : MonoBehaviour
     {
         if(Input.GetKeyDown("e") && will_open )
         {
-             animator.SetTrigger("Open");
-             HideUI();
+           StartCoroutine(ChestOpening());
         }
+    }
+
+    IEnumerator ChestOpening()
+    {
+             animator.SetTrigger("Open");
+             gameObject.GetComponent<AudioSource>().PlayOneShot(chestSound);
+             HideUI();
+             yield return new WaitForSeconds(1);
+              gameObject.GetComponent<AudioSource>().PlayOneShot(pirateChest);
     }
 
 
