@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class cannon_behaviour : MonoBehaviour
 {
-
+    public AudioSource myAudioSource;
+    public AudioClip[] myAudioClips;
     public AudioClip cannonShot; 
     public GameObject ui;
+    public ParticleSystem smoke;
     bool will_fire = false;   
 
     void Start()
@@ -20,6 +22,9 @@ public class cannon_behaviour : MonoBehaviour
        if(Input.GetKeyDown("e") && will_fire )
         {
              gameObject.GetComponent<AudioSource>().PlayOneShot(cannonShot);
+             smoke.Play();
+             AudioClip randomClip = myAudioClips[Random.Range(0, myAudioClips.Length)];
+             myAudioSource.PlayOneShot(randomClip);
              HideUI();
         } 
     }
