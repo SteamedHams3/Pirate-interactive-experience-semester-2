@@ -5,6 +5,7 @@ using UnityEngine;
 public class chest_behaviour : MonoBehaviour
 {
     public GameObject chest_opening_lid;
+    public GameObject ui;
     bool will_open = false;
     bool closed;
 
@@ -13,7 +14,7 @@ public class chest_behaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        HideUI();
     }
 
     // Update is called once per frame
@@ -22,6 +23,7 @@ public class chest_behaviour : MonoBehaviour
         if(Input.GetKeyDown("e") && will_open )
         {
              animator.SetTrigger("Open");
+             HideUI();
         }
     }
 
@@ -30,10 +32,24 @@ public class chest_behaviour : MonoBehaviour
     private void OnTriggerExit (Collider other)
        {
         will_open = false;
+        HideUI();
        }
 
        private void OnTriggerEnter (Collider other)
        {
         will_open = true;
+        ShowUI();
+    
+       }
+
+
+       public void HideUI()
+       {
+         ui.SetActive(false);
+       }
+
+       public void ShowUI()
+       {
+         ui.SetActive(true);
        }
 }
