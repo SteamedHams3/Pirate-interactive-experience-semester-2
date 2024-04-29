@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class cannon_behaviour_2 : MonoBehaviour
 {
-     public AudioSource myAudioSource;
+    public AudioSource myAudioSource;
     public AudioClip[] myAudioClips;
     public AudioClip cannonShot; 
     public GameObject ui;
