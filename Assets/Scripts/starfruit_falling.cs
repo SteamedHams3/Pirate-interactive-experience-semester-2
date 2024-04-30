@@ -34,7 +34,7 @@ public class starfruit_falling : MonoBehaviour
     IEnumerator starfruitDrop()
     {
          animator.SetTrigger("FruitFalling");
-         yield return new WaitForSeconds(0.5f);
+         yield return new WaitForSeconds(1);
          gameObject.GetComponent<AudioSource>().PlayOneShot(starfruitFall);
          yield return new WaitForSeconds(0.5f);
           gameObject.GetComponent<AudioSource>().PlayOneShot(pirateReaction);
