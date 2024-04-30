@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class tankard_inspect : MonoBehaviour
+public class map_inspect : MonoBehaviour
 {
-    public AudioClip tankardVoice;
+    public AudioClip mapVoice;
     public GameObject ui;
-    bool will_play_tankard;
+    bool will_play_map;
     
     void Start()
     {
@@ -16,9 +16,9 @@ public class tankard_inspect : MonoBehaviour
  
     void Update()
     {
-        if(Input.GetKeyDown("e") && will_play_tankard)
+        if(Input.GetKeyDown("e") && will_play_map)
         {
-            gameObject.GetComponent<AudioSource>().PlayOneShot(tankardVoice);
+            gameObject.GetComponent<AudioSource>().PlayOneShot(mapVoice);
         }
         }
     
@@ -27,14 +27,14 @@ public class tankard_inspect : MonoBehaviour
 
     private void OnTriggerEnter (Collider other)
        {
-        will_play_tankard = true;
+        will_play_map = true;
         ShowUI();
     
        }
 
     private void OnTriggerExit (Collider other)
        {
-        will_play_tankard = false;
+        will_play_map = false;
         HideUI();
        }
 
