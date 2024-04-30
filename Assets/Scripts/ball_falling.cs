@@ -7,6 +7,8 @@ public class ball_falling : MonoBehaviour
 
    public Animator animator;
    public AudioClip ballSound;
+
+   bool will_play_sound = false;
     
     void Start()
     {
@@ -21,7 +23,7 @@ public class ball_falling : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
+        if(other.tag == "Player" && !will_play_sound)
         {
            StartCoroutine(ballFalling());
         }
@@ -32,5 +34,6 @@ public class ball_falling : MonoBehaviour
          animator.SetTrigger("Fall");
          yield return new WaitForSeconds(0.5f);
          gameObject.GetComponent<AudioSource>().PlayOneShot(ballSound);
+         will_play_sound = true;
     }
 }
