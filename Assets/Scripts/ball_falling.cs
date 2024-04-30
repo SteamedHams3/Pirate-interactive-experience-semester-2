@@ -7,6 +7,7 @@ public class ball_falling : MonoBehaviour
 
    public Animator animator;
    public AudioClip ballSound;
+   public AudioClip pirateScared;
 
    bool will_play_sound = false;
     
@@ -34,6 +35,8 @@ public class ball_falling : MonoBehaviour
          animator.SetTrigger("Fall");
          yield return new WaitForSeconds(0.5f);
          gameObject.GetComponent<AudioSource>().PlayOneShot(ballSound);
+         yield return new WaitForSeconds(0.5f);
+          gameObject.GetComponent<AudioSource>().PlayOneShot(pirateScared);
          will_play_sound = true;
     }
 }
